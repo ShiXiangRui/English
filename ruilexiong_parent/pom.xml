@@ -27,9 +27,31 @@
             <artifactId>popper.js</artifactId>
             <version>1.14.1</version>
         </dependency>
-
+        <!--springBoot工程实现热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>1.5.14.RELEASE</version>
+            <optional>true</optional>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>-->
 
 
     </dependencies>
-    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork><!--注意要修改这里-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
