@@ -7,7 +7,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.ruilexiong.edu.manager;
+package com.ruilexiong.edu.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     @RequestMapping("/user/login")
     public String login(){
-        return "a";
+        return "jsp/a";
+    }
+    @RequestMapping("user/registe")
+    public String registe(){
+        return "templates/hello";
     }
 }

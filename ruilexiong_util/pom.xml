@@ -13,6 +13,7 @@
     <artifactId>ruilexiong_util</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>ruilexiong_util</name>
+    <packaging>jar</packaging>
 
 
     <properties>
