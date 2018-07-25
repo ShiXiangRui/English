@@ -40,7 +40,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/");
         resolver.setSuffix(".jsp");
-        resolver.setViewNames("jsp/*");//设置跳转路径以jsp开头
+         resolver.setViewNames("jsp/*");//设置跳转路径以jsp开头
         resolver.setOrder(2);
         return resolver;
     }
@@ -68,7 +68,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("utf-8");
-        viewResolver.setViewNames(new String[]{"thymeleaf/*"});//设置跳转路径以thymeleaf开头的
+        viewResolver.setViewNames(new String[]{"templates/*"});//设置跳转路径以thymeleaf开头的
         viewResolver.setOrder(1);
         return viewResolver;
     }

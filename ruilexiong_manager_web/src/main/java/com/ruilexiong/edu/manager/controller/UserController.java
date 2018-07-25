@@ -7,10 +7,15 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.ruilexiong.edu.controller;
+package com.ruilexiong.edu.manager.controller;
 
+import com.ruilexiong.edu.manager.entity.User;
+import com.ruilexiong.edu.manager.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -22,12 +27,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class UserController {
+    @Autowired
+    private UserService userService;
     @RequestMapping("/user/login")
     public String login(){
         return "jsp/a";
     }
     @RequestMapping("user/registe")
     public String registe(){
+        List<User> user = userService.getUser();
+        for (int i = 0; i <user.size() ; i++) {
+            System.out.println(user.get(i));
+        }
         return "templates/hello";
     }
 }
