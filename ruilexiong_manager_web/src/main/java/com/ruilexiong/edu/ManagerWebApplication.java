@@ -9,10 +9,11 @@
  */
 package com.ruilexiong.edu;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.logging.Logger;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -24,10 +25,16 @@ import java.util.logging.Logger;
  */
 @SpringBootApplication
 public class ManagerWebApplication {
-        private static Logger logger= Logger.getLogger("ManagerWebApplication.class");
+        private static Logger logger= LoggerFactory.getLogger("ManagerWebApplication.class");
 
 
         public static void main(String[] args) {
             SpringApplication.run(ManagerWebApplication.class, args);
+            logger.info("项目启动...");
+            logger.error("测试");
+            logger.debug("cac");
+            logger.trace("trace");
+            logger.warn("warn");
+
         }
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -34,11 +35,13 @@ public class UserController {
         return "jsp/a";
     }
     @RequestMapping("user/registe")
-    public String registe(){
+    public String registe(Map<String,Object> map){
         List<User> user = userService.getUser();
         for (int i = 0; i <user.size() ; i++) {
             System.out.println(user.get(i));
         }
+        map.put("user",user.get(0));
         return "templates/hello";
     }
+
 }

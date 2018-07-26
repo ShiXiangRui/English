@@ -41,7 +41,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         resolver.setPrefix("/WEB-INF/");
         resolver.setSuffix(".jsp");
          resolver.setViewNames("jsp/*");//设置跳转路径以jsp开头
-        resolver.setOrder(2);
+        resolver.setOrder(1);
         return resolver;
     }
 
@@ -69,7 +69,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("utf-8");
         viewResolver.setViewNames(new String[]{"templates/*"});//设置跳转路径以thymeleaf开头的
-        viewResolver.setOrder(1);
+        viewResolver.setOrder(2);
         return viewResolver;
     }
 
