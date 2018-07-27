@@ -7,9 +7,9 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.ruilexiong.edu.manager.mapping;
+package com.ruilexiong.edu.mapping;
 
-import com.ruilexiong.edu.manager.entity.User;
+import com.ruilexiong.edu.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

@@ -7,10 +7,10 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.ruilexiong.edu.manager.controller;
+package com.ruilexiong.edu.controller;
 
-import com.ruilexiong.edu.manager.entity.User;
-import com.ruilexiong.edu.manager.service.UserService;
+import com.ruilexiong.edu.entity.User;
+import com.ruilexiong.edu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

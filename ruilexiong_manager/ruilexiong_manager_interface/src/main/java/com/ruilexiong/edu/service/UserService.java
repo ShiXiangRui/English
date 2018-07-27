@@ -1,6 +1,6 @@
-package com.ruilexiong.edu.manager.service;
+package com.ruilexiong.edu.service;
 
-import com.ruilexiong.edu.manager.entity.User;
+import com.ruilexiong.edu.entity.User;
 
 import java.util.List;
 

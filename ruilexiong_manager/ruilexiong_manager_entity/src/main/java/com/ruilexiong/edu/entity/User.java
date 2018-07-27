@@ -7,7 +7,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.ruilexiong.edu.manager.entity;
+package com.ruilexiong.edu.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
