@@ -30,11 +30,11 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
-    @RequestMapping("/user/login")
+    @RequestMapping("/manager/login")
     public String login(){
         return "jsp/a";
     }
-    @RequestMapping("user/registe")
+    @RequestMapping("manager/registe")
     public String registe(Map<String,Object> map){
         List<User> user = userService.getUser();
         for (int i = 0; i <user.size() ; i++) {
