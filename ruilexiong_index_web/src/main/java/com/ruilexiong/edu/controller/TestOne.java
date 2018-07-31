@@ -9,6 +9,7 @@
  */
 package com.ruilexiong.edu.controller;
 
+import com.ruilexiong.edu.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,13 +26,14 @@ import java.util.Map;
 @Controller
 public class TestOne {
 
-    @RequestMapping("index/a")
-    public String login(){
+    private UserService userService;
+    @RequestMapping("index/main")
+    public String index(){
             return "jsp/index";
     }
-    @RequestMapping("index/b")
-    public String registe(Map<String,Object> map){
-        map.put("user","a");
+    @RequestMapping("login")
+    public String toLogin(Map<String,Object> map){
         return "templates/login";
     }
+
 }

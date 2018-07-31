@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +32,7 @@
                     <a class="nav-link js-scroll-trigger" href="${pageContext.request.contextPath}/b">注册</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="">登录</a>
+                    <a class="nav-link js-scroll-trigger" th:href="@{/login}">登录</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="">联系我们</a>

@@ -28,7 +28,8 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#">首页</a>
+        <a class="navbar-brand js-scroll-trigger" href="">首页</a>
+        <span>您好,会员${pageContext.session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getName()}</span>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -37,6 +38,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="/logout">注销</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#movie">看美剧</a>
                 </li>
