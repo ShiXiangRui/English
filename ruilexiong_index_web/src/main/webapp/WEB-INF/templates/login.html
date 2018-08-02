@@ -12,21 +12,28 @@
 		<link href="/asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
 	</head>
 	<body class="text-center">
-		<form class="form-signin" action="/j_spring_security_check" th:action="@{/j_spring_security_check}" method="post">
+		<form class="form-signin" action="/index/login" th:action="@{/index/login}" method="post">
 			<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72">
 			<h1 class="h3 mb-3 font-weight-normal" >请登录</h1>
 			<!--判断-->
 
-			<label class="sr-only" >Account</label>
+
 			<input type="text"  name="username" class="form-control" placeholder="account" th:placeholder="用户名" required="" autofocus="">
-			<label class="sr-only" >Password</label>
+			<input type="text" name="yzm" class="form-control" placeholder="Verification Code" th:placeholder="验证码" required="">
 			<input type="password" name="password" class="form-control" placeholder="Password" th:placeholder="密码" required="">
+
+			<img  class="active" th:src="@{/code/image}"/>
+
+            <!--<p th:text="" style="color: red" th:if="${!#strings.isEmpty(session.SPRING_SECURITY_LAST_EXCEPTION.message)}"></p>-->
 			<div class="checkbox mb-3">
 				<label>
           			<input type="checkbox" name="rememberMe"/> 记住我
         		</label>
 			</div>
+
 			<button class="btn btn-lg btn-primary btn-block" type="submit" >登陆</button>
+
+
 			<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
 		</form>
 	</body>

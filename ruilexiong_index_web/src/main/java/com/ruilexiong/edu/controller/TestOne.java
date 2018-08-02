@@ -35,5 +35,14 @@ public class TestOne {
     public String toLogin(Map<String,Object> map){
         return "templates/login";
     }
+  @RequestMapping("/index/login")
+    public String login(){
+        System.out.println("00000000000000000000000000000000000000000");
+        return "jsp/index";
+    }
+    @RequestMapping("/index/hello")
+    public String hello(){
+        return "templates/hello";
+    }
 
 }
