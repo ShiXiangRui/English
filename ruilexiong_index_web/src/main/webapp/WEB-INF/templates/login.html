@@ -10,9 +10,20 @@
 		<link href="/asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.css}" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<link href="/asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+		<style type="text/css">
+			#particles-js {
+				position: absolute;
+				top:0;
+				width:100%;
+				z-index: -1;
+			}
+		</style>
 	</head>
-	<body class="text-center">
-		<form class="form-signin" action="/index/login" th:action="@{/index/login}" method="post">
+
+	<body class="text-center" th:color="red">
+	<div id="particles-js" ></div>
+		<div   style="background-image: url(/img/bg-masthead.jpg); background-repeat:no-repeat; background-attachment:fixed;width: 450px">
+		<form class="form-signin" action="/j_spring_security_check" th:action="@{/j_spring_security_check}" method="post">
 			<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72">
 			<h1 class="h3 mb-3 font-weight-normal" >请登录</h1>
 			<!--判断-->
@@ -22,7 +33,7 @@
 			<input type="text" name="yzm" class="form-control" placeholder="Verification Code" th:placeholder="验证码" required="">
 			<input type="password" name="password" class="form-control" placeholder="Password" th:placeholder="密码" required="">
 
-			<img  class="active" th:src="@{/code/image}"/>
+			<img id="img"  class="active" th:src="@{/code/image}" onclick="getPic()" />
 
             <!--<p th:text="" style="color: red" th:if="${!#strings.isEmpty(session.SPRING_SECURITY_LAST_EXCEPTION.message)}"></p>-->
 			<div class="checkbox mb-3">
@@ -36,6 +47,15 @@
 
 			<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
 		</form>
+		</div>
+	<script type="text/javascript">
+        function getPic(){
+            var img = document.getElementById("img");
+            img.src="/code/image?flag="+Math.random();
+        };
+	</script>
+	<script src="/js/particles.js"></script>
+	<script src="/js/app.js"></script>
 	</body>
 
 </html>

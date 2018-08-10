@@ -21,10 +21,10 @@
     <!-- Custom styles for this template -->
     <link href="/css/grayscale.min.css" rel="stylesheet">
 
+
 </head>
 
 <body id="page-top">
-
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -56,7 +56,7 @@
 </nav>
 
 <!-- Header -->
-<header class="masthead">
+<header class="masthead" style="background-image: url(/img/bg-masthead.jpg); background-repeat:no-repeat; background-attachment:fixed">
     <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto text-center">
             <h1 class="mx-auto my-0 text-uppercase">英语学习网站</h1>
@@ -131,6 +131,7 @@
 <script src="/webjars/bootstrap/4.1.0/js/bootstrap.js"></script>
 <!-- Custom scripts for this template -->
 <script src="/js/grayscale.min.js"></script>
+
 
 </body>
 

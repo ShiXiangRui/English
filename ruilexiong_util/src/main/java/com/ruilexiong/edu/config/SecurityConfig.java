@@ -54,9 +54,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .formLogin().loginPage("/login")
                 .usernameParameter("username")//登录页账户 name名称
                 .passwordParameter("password")//登录页密码
-                .loginProcessingUrl("/index/login")//设置跳转自定义login
+                .loginProcessingUrl("/j_spring_security_check")//设置跳转自定义login
                 .defaultSuccessUrl("/index/main")//设置默认跳转成功路径(起始位登陆页面的,其他跳转按放行页).defaultSuccessUrl("/index/hello");
-                .failureUrl("/login?error=true");
+                .failureUrl("/login?error=true").successForwardUrl("/index/main");
         http.rememberMe().rememberMeParameter("rememberMe");//开启记住我功能 登录页记住我
         System.out.println("-------------------------------------------");
     }

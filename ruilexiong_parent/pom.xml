@@ -96,6 +96,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <!--登陆画面-->
+        <dependency>
+            <groupId>org.webjars.bowergithub.ferbueno</groupId>
+            <artifactId>polymer-particles</artifactId>
+            <version>1.0.1</version>
+        </dependency>
 
 
     </dependencies>
