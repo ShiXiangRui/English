@@ -9,9 +9,9 @@
  */
 package com.ruilexiong.edu.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.ruilexiong.edu.entity.User;
 import com.ruilexiong.edu.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,11 +28,11 @@ import java.util.Map;
  */
 @Controller
 public class UserController {
-    @Autowired
+    @Reference
     private UserService userService;
-    @RequestMapping("/manager/login")
+    @RequestMapping("/login")
     public String login(){
-        return "jsp/a";
+        return "templates/login";
     }
     @RequestMapping("manager/registe")
     public String registe(Map<String,Object> map){

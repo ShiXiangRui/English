@@ -10,3 +10,15 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+#服务名
+dubbo:
+  application:
+    name: ruilexiong-manager-service
+#注册中心地址
+  registry:
+    address: zookeeper://192.168.43.190:2281
+#服务包
+  scan:
+    base-packages: com.ruilexiong.edu.service
+  protocol:
+    port: 20880

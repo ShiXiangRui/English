@@ -9,9 +9,12 @@
  */
 package com.ruilexiong.edu.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.ruilexiong.edu.service.TestHello;
 import com.ruilexiong.edu.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
@@ -25,8 +28,11 @@ import java.util.Map;
  */
 @Controller
 public class TestOne {
-
+    @Reference
     private UserService userService;
+    @Reference
+    private TestHello testHello;
+
     @RequestMapping("index/main")
     public String index(){
             return "jsp/index";
@@ -35,14 +41,21 @@ public class TestOne {
     public String toLogin(Map<String,Object> map){
         return "templates/login";
     }
- /* @RequestMapping("/index/login")
+  @RequestMapping("/index/login")
     public String login(){
         System.out.println("00000000000000000000000000000000000000000");
         return "jsp/index";
-    }*/
+    }
     @RequestMapping("/index/hello")
     public String hello(){
         return "templates/hello";
+
+    }
+    @ResponseBody
+  @RequestMapping("/hello")
+    public String hello2(){
+      System.out.println(userService.getUser());
+      return testHello.hello();
     }
 
 }

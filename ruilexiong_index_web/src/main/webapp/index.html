@@ -37,7 +37,8 @@
                     <a class="nav-link js-scroll-trigger" href="${pageContext.request.contextPath}/b">注册</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" th:href="@{/login}">登录</a>
+                    <a class="nav-link js-scroll-trigger" th:if="${session.SPRING_SECURITY_CONTEXT==null}" th:href="@{/login}">登录</a>
+                    <a class="nav-link js-scroll-trigger" th:if="${session.SPRING_SECURITY_CONTEXT !=null}" href="/logout" >您好!&nbsp;<span th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"/>&nbsp;&nbsp;&nbsp;注销</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="">联系我们</a>

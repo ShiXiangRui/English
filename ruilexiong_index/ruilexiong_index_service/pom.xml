@@ -6,6 +6,7 @@
         <artifactId>ruilexiong_index</artifactId>
         <groupId>com.ruilexiong.edu</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../ruilexiong_index/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ruilexiong.edu</groupId>
@@ -19,6 +20,10 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.ruilexiong.edu</groupId>
             <artifactId>ruilexiong_index_interface</artifactId>
@@ -35,6 +40,7 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 

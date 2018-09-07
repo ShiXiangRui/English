@@ -16,58 +16,19 @@ package com.ruilexiong.edu;
  * limitations under the License.
  */
 
-import java.io.IOException;
-import javax.portlet.PortletConfig;
-import javax.portlet.GenericPortlet;
-import javax.portlet.PortletException;
-import javax.portlet.PortletRequestDispatcher;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
-import javax.portlet.WindowState;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class MyPortlet extends GenericPortlet {
+@SpringBootApplication
+public class MyPortlet {
+    private static Logger logger= LoggerFactory.getLogger("MyPortlet.class");
 
-    private static final String NORMAL_VIEW = "/normal.jsp";
-    private static final String MAXIMIZED_VIEW = "/maximized.jsp";
-    private static final String HELP_VIEW = "/help.jsp";
 
-    private PortletRequestDispatcher normalView;
-    private PortletRequestDispatcher maximizedView;
-    private PortletRequestDispatcher helpView;
-
-    public void doView( RenderRequest request, RenderResponse response )
-        throws PortletException, IOException {
-
-        if( WindowState.MINIMIZED.equals( request.getWindowState() ) ) {
-            return;
-        }
-
-        if ( WindowState.NORMAL.equals( request.getWindowState() ) ) {
-            normalView.include( request, response );
-        } else {
-            maximizedView.include( request, response );
-        }
-    }
-
-    protected void doHelp( RenderRequest request, RenderResponse response )
-        throws PortletException, IOException {
-
-        helpView.include( request, response );
-
-    }
-
-    public void init( PortletConfig config ) throws PortletException {
-        super.init( config );
-        normalView = config.getPortletContext().getRequestDispatcher( NORMAL_VIEW );
-        maximizedView = config.getPortletContext().getRequestDispatcher( MAXIMIZED_VIEW );
-        helpView = config.getPortletContext().getRequestDispatcher( HELP_VIEW );
-    }
-
-    public void destroy() {
-        normalView = null;
-        maximizedView = null;
-        helpView = null;
-        super.destroy();
+    public static void main(String[] args) {
+        SpringApplication.run(MyPortlet.class, args);
+        logger.info("808");
     }
 
 }

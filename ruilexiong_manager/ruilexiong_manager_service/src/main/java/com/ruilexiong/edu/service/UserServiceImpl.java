@@ -9,12 +9,14 @@
  */
 package com.ruilexiong.edu.service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.ruilexiong.edu.entity.User;
 import com.ruilexiong.edu.mapping.UserMapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -24,6 +26,7 @@ import java.util.List;
  * @create 2018/7/24
  * @since 1.0.0
  */
+@Component
 @Service
 public class UserServiceImpl implements  UserService{
 

@@ -7,7 +7,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.ruilexiong.edu.config;
+package com.ruilexiong.edu.config.securitycode;
 
 import org.springframework.security.core.AuthenticationException;
 
