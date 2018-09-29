@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <meta charset="UTF-8">
@@ -40,6 +41,9 @@
                     <a class="nav-link js-scroll-trigger" th:if="${session.SPRING_SECURITY_CONTEXT==null}" th:href="@{/login}">登录</a>
                     <a class="nav-link js-scroll-trigger" th:if="${session.SPRING_SECURITY_CONTEXT !=null}" href="/logout" >您好!&nbsp;<span th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"/>&nbsp;&nbsp;&nbsp;注销</a>
                 </li>
+                <div sec:authorize="hasRole('ROLE_1')">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8082/index/login">后台管理</a></li></div>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="">联系我们</a>
                 </li>

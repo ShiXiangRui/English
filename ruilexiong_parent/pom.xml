@@ -108,6 +108,13 @@
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
         </dependency>
+        <!--springsecurity与thymeleaf整合-->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>3.0.2.RELEASE</version>
+        </dependency>
+
         <!--登陆画面-->
         <!--<dependency>
             <groupId>org.webjars.bowergithub.ferbueno</groupId>

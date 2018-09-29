@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.headers().frameOptions().disable();//设置iframe标签可使用
         //默认访问规则super.configure(http);
         //自定义请求规则
         http.csrf().disable() //关闭CSRF功能

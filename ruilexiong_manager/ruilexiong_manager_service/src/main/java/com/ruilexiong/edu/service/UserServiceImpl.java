@@ -36,4 +36,6 @@ public class UserServiceImpl implements  UserService{
     public List<User> getUser() {
         return userMapping.findAll();
     }
+
+
 }

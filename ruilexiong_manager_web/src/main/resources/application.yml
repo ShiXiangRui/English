@@ -1,5 +1,7 @@
 server:
   port: 8082
+  tomcat:
+      additional-tld-skip-patterns: '*mchange-commons-java*.jar'
 spring:
   datasource:
     username: root

@@ -1,0 +1,25 @@
+server:
+  port: 8083
+#服务名
+dubbo:
+  application:
+    name: ruilexiong-index-service
+#注册中心地址
+  registry:
+    address: zookeeper://192.168.43.190:2281
+#服务包
+  scan:
+    base-packages: com.ruilexiong.edu.service
+#服务端口号
+  protocol:
+    port: '20881'
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.43.190:3316/jpa
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

@@ -13,7 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -31,10 +34,16 @@ public class ManagerWebApplication {
         public static void main(String[] args) {
             SpringApplication.run(ManagerWebApplication.class, args);
             logger.info("项目启动...");
-            logger.error("测试");
-            logger.debug("cac");
-            logger.trace("trace");
-            logger.warn("warn");
-
         }
+    @Configuration
+    public class DefaultView extends WebMvcConfigurerAdapter {
+
+        @Override/*项目初始页面*/
+        public void addViewControllers(ViewControllerRegistry registry) {
+            registry.addViewController("/").setViewName("/templates/main.html");//因受thymeleaf影响,路径在WWEB-INF上级
+            registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+            super.addViewControllers(registry);
+        }
+    }
 }
+
