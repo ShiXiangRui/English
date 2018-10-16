@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>文件上传</title>
+    <script src="/webjars/jquery/3.0.0/jquery.js"></script>
+    <script src="/webjars/bootstrap/4.1.0/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="/webjars/bootstrap-fileinput/4.3.4/css/fileinput.css" />
+    <script src="/webjars/bootstrap-fileinput/4.3.4/js/fileinput.js"></script>
+    <script src="/webjars/bootstrap-fileinput/4.3.4/js/locales/zh.js"></script>
+
+
+</head>
+<body onload="initFileUpload()">
+<!--<h2>已有文件：</h2>
+<p th:each="file : ${files}">
+    [站外图片上传中……(2)]，文件名称：<span th:text="${file.name}"></span>
+</p>
+<hr/>
+<form method="post" enctype="multipart/form-data" action="/manager/uploadVoice">
+    文件主题：<input name="topic" type="text"/>
+    <br/>
+    音频文件：<input name="voiceFiles" type="file"/>
+    <br/>
+    <button type="submit">确定上传</button>
+</form>-->
+
+<form id="voiceUploadForm" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <input id="voiceFiles" name="voiceFiles" type="file" multiple="multiple" class="file">
+    </div>
+</form>
+
+
+</body>
+<script>
+    //初始化文件上传插件
+    function initFileUpload() {
+        $("#voiceFiles").fileinput({
+            language: 'zh',                                 //中文
+            uploadUrl: '/manager/uploadVoice',//'<%=basePath%>/commodity/addCommodityPic',
+            showPreview: true,				//展前预览
+            showUpload: true,				//不显示上传按钮
+            showCaption: false,				//不显示文字表述
+            uploadAsync: false,                            //采用同步上传
+            removeFromPreviewOnError: true,                 //当文件不符合规则，就不显示预览
+            maxFileCount: 20,
+            maxFileSize: 1024 * 1024,                          //单位为kb，如果为0表示不限制文件大小
+            allowedFileExtensions: ["mp3", "wav","jpg"],
+            initialCaption: "请上传文件"
+           /* uploadExtraData: function(previewId, index) {   //额外参数 返回json数组
+                return {
+                    'id':commId
+                };
+            }*/
+        }).on("filebatchuploadsuccess", function (event, data) {	//当上传成功回调函数
+            var response = data.response;
+            if (response.resultCode == '0') {
+                $("#closedAddWin").click();
+                table.ajax.reload();
+            }
+        });
+    }
+
+
+   /* var commId;
+     function addCommodity(){
+        alert(1);
+         if($('#voiceFiles').fileinput("getFilesCount")<=0){          //获取文件个数
+             myAlert(1,"请至少上传一张详情图片!");
+             return;
+         }
+         $("#voiceUploadForm").attr('action','/manager/uploadVoice');
+         $("#voiceUploadForm").ajaxSubmit({
+             success : function(data){
+                 var result = $.parseJSON(data);
+                 if(result.resultCode == 0){
+                     var id = result.result;	                //先保存基本数据，返回数据库id
+                     commId = id;                            //保存id值
+                     $('#voiceFiles').fileinput('upload');        //然后触发插件开始上传文件
+                 }
+             }
+         });
+     }*/
+
+
+</script>
+</html>

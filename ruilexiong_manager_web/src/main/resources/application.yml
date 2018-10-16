@@ -19,3 +19,5 @@ dubbo:
 #注册中心地址
   registry:
     address: zookeeper://192.168.43.190:2281
+web:
+  upload-path: D:/1/voice/upload/

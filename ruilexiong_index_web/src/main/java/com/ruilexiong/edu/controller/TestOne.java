@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Map;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈测试一〉
  *
  * @author asus
@@ -39,35 +39,40 @@ public class TestOne {
     private TaskService taskService;
 
     @RequestMapping("index/main")
-    public String index(){
-            return "jsp/index";
+    public String index() {
+        return "jsp/index";
     }
+
     @RequestMapping("login")
-    public String toLogin(Map<String,Object> map){
+    public String toLogin(Map<String, Object> map) {
         return "templates/login";
     }
-  @RequestMapping("/index/login")
-    public String login(){
+
+    @RequestMapping("/index/login")
+    public String login() {
         System.out.println("00000000000000000000000000000000000000000");
         return "jsp/index";
     }
+
     @RequestMapping("/index/hello")
-    public String hello(){
+    public String hello() {
         return "templates/hello";
 
     }
+
     @ResponseBody
-  @RequestMapping("/hello")
-    public String hello2(){
-      System.out.println(userService.getUser());
-      return testHello.hello();
+    @RequestMapping("/hello")
+    public String hello2() {
+        System.out.println(userService.getUser());
+        return testHello.hello();
     }
+
     @ResponseBody
     @RequestMapping("/time")
-    public String time(){
+    public String time() {
 
         System.out.println("添加定时任务");
-        TaskInfo taskInfo=new TaskInfo();
+        TaskInfo taskInfo = new TaskInfo();
         taskInfo.setJobName("com.ruilexiong.edu.service.ScheduleTest");
         taskInfo.setJobGroup("测试1");
         taskInfo.setCronExpression("0 */1 * * * ?");
@@ -76,30 +81,32 @@ public class TestOne {
         taskService.addJob(taskInfo);
         return testHello.hello();
     }
+
     @ResponseBody
     @RequestMapping("/tstop")
-    public String stop(){
+    public String stop() {
         System.out.println("暂停定时任务");
-        TaskInfo taskInfo=new TaskInfo();
+        TaskInfo taskInfo = new TaskInfo();
         taskInfo.setJobName("第一次测试");
         taskInfo.setJobGroup("1");
         taskInfo.setCronExpression("0 */1 * * * ?");
         taskInfo.setJobDescription("第一次测试");
         taskInfo.setJobDataMap(new JobDataMap());
-        taskService.pause(taskInfo.getJobName(),taskInfo.getJobGroup());
+        taskService.pause(taskInfo.getJobName(), taskInfo.getJobGroup());
         return testHello.hello();
     }
+
     @ResponseBody
     @RequestMapping("/delete")
-    public String delete(){
+    public String delete() {
         System.out.println("删除定时任务");
-        TaskInfo taskInfo=new TaskInfo();
+        TaskInfo taskInfo = new TaskInfo();
         taskInfo.setJobName("com.ruilexiong.edu.service.ScheduleTest");
         taskInfo.setJobGroup("测试1");
         taskInfo.setCronExpression("0 */1 * * * ?");
         taskInfo.setJobDescription("第一次测试");
         taskInfo.setJobDataMap(new JobDataMap());
-        taskService.delete(taskInfo.getJobName(),taskInfo.getJobGroup());
+        taskService.delete(taskInfo.getJobName(), taskInfo.getJobGroup());
         return testHello.hello();
     }
 
