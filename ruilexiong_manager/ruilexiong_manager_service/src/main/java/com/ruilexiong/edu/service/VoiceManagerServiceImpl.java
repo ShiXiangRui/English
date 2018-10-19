@@ -10,10 +10,13 @@
 package com.ruilexiong.edu.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.ruilexiong.edu.entity.VoiceFile;
+import com.ruilexiong.edu.mapping.VoiceFileMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈音频文件管理业务类〉
  *
  * @author asus
@@ -22,6 +25,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Service
-public class VoiceManagerServiceImpl implements  VoiceManagerService{
+public class VoiceManagerServiceImpl implements VoiceManagerService {
 
+    @Autowired
+    private VoiceFileMapping voiceFileMapping;
+
+    @Override
+    public void insertVoiceFile(VoiceFile voiceFile) {
+        voiceFileMapping.save(voiceFile);
+    }
 }

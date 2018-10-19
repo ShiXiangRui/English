@@ -10,6 +10,7 @@
 package com.ruilexiong.edu.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.ruilexiong.edu.entity.VoiceFile;
 import com.ruilexiong.edu.service.VoiceManagerService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -50,7 +52,7 @@ public class VoiceManagerController {
     //将音频文件上传至指定目录
     @PostMapping(value = "/manager/uploadVoice")
     @ResponseBody
-    public String index(HttpServletRequest request, @RequestParam("voiceFiles") MultipartFile[] files) {
+    public String uploadVoice(HttpServletRequest request, @RequestParam("voiceFiles") MultipartFile[] files, @RequestParam("fileType") String fileType ) {
 
         if (files != null && files.length >= 1) {
             //创建根目录路径
@@ -61,13 +63,20 @@ public class VoiceManagerController {
             BufferedOutputStream bw = null;
             for (int i = 0; i < files.length; i++) {
                 try {
+                    VoiceFile voiceFile=new VoiceFile();
+                    voiceFile.setTypeId(Integer.parseInt(fileType));
                     String fileName = files[i].getOriginalFilename();
+                    voiceFile.setFileName(fileName);
+                    voiceFile.setPicName(fileName.substring(0,fileName.indexOf("."))+".jpg");//设置匹配图片
+                    LocalDateTime today = LocalDateTime.now();
+                    voiceFile.setUploadTime(today+"");
                     //判断是否有文件且是否为音频文件
                     if (fileName != null && !"".equalsIgnoreCase(fileName.trim()) && isVoiceFile(fileName)) {
                         //创建输出文件对象
                         File outFile = new File(uploadPath + "/" + fileName);
                         //拷贝文件到输出文件对象
-                        FileUtils.copyInputStreamToFile(files[0].getInputStream(), outFile);
+                        FileUtils.copyInputStreamToFile(files[i].getInputStream(), outFile);
+                        voiceManagerService.insertVoiceFile(voiceFile);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -85,6 +94,31 @@ public class VoiceManagerController {
         return "0";
     }
 
+  /*  @PostMapping(value = "/manager/deleteVoice")
+    @ResponseBody
+    public String deleteVoice(HttpServletRequest request, @RequestParam("voiceFiles") MultipartFile[] files) {
+
+        if (files != null && files.length >= 1) {
+            //创建根目录路径
+            File rootPath = new File(uploadPath);
+            if (!rootPath.exists()) {
+                rootPath.mkdirs();
+            }
+            for (int i = 0; i < files.length; i++) {
+                    String fileName = files[i].getOriginalFilename();
+                    //判断是否有文件且是否为音频文件
+                    if (fileName != null && !"".equalsIgnoreCase(fileName.trim()) && isVoiceFile(fileName)) {
+                        //创建输出文件对象
+                        File outFile = new File(uploadPath + "/" + fileName);
+                        if(outFile.exists()){
+                            //从服务器删除文件
+                            outFile.delete();
+                        }
+                    }
+            }
+        }
+        return "0";
+    }*/
     //判断后缀是否符合音频文件
     private boolean isVoiceFile(String fileName) {
         String[] img_type = new String[]{".mp3", ".wav", "jpg"};
